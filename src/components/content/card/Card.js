@@ -12,14 +12,13 @@ export default class Card extends React.Component {
 
   handleClick() {
     this.setState({ selectedCard: !this.state.selectedCard });
-    console.log(this.state.selectedCard);
   }
 
   render() {
     const { name, decr } = this.props;
     const { selectedCard } = this.state;
     const className = selectedCard ? "card selected" : "card";
-    console.log(className);
+
     return (
       <div className={className}>
         <div className="title">
@@ -35,5 +34,4 @@ export default class Card extends React.Component {
 Card.propTypes = {
   name: PropTypes.string,
   decr: PropTypes.string,
-  onClick: PropTypes.func,
 };
