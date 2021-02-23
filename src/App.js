@@ -1,6 +1,6 @@
 import './App.scss';
-import Content from './Content/Card/Content';
-import Header from "./Header/Header";
+import Content from './Content';
+import Header from "./Header";
 
 function App() {
   return (
