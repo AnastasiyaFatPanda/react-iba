@@ -1,0 +1,27 @@
+.card {
+  background-color: rgba(211, 211, 211, 0.432);
+  border-radius: 10%;
+  border-width: 3px;
+  height: 200px;
+  width: 200px;
+
+  .title {
+    background-color: black;
+    color: white;
+    font-size: large;
+    font-weight: bold;
+    padding-bottom: 3px;
+    padding-top: 3px;
+    text-align: center;
+    width: 100%;
+  }
+
+  .decr {
+    font-size: small;
+    height: 100%;
+    padding: 5px;
+    text-align: left;
+    width: 100%;
+    margin: 1rem;
+  }
+}

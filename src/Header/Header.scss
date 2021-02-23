@@ -1,0 +1,15 @@
+.header {
+  align-items: center;
+  background: black;
+  display: flex;
+  flex-direction: row;
+
+  img {
+    height: 30px;
+    padding: 15px;
+  }
+
+  .title {
+    color: white;
+  }
+}
