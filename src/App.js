@@ -1,6 +1,7 @@
-import "./App.scss";
-import Content from "./components/content";
-import Header from "./components/header";
+import React from 'react';
+import './App.scss';
+import Content from './components/content';
+import Header from './components/header';
 
 function App() {
   return (

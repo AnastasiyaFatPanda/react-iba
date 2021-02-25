@@ -1,5 +1,6 @@
-import Card from "./card";
-import "./Content.scss";
+import React from 'react';
+import Card from './card';
+import './Content.scss';
 
 const Content = () => (
   <div className="content">

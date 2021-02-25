@@ -1,6 +1,6 @@
-import React from "react";
-import "./Card.scss";
-import PropTypes from "prop-types";
+import React from 'react';
+import './Card.scss';
+import PropTypes from 'prop-types';
 
 export default class Card extends React.Component {
   constructor(props) {
@@ -10,20 +10,25 @@ export default class Card extends React.Component {
     };
   }
 
-  handleClick() {
-    this.setState({ selectedCard: !this.state.selectedCard });
+  handleCheckboxClick = () => {
+    const { selectedCard } = this.state;
+    this.setState({ selectedCard: !selectedCard });
   }
 
   render() {
     const { name, decr } = this.props;
     const { selectedCard } = this.state;
-    const className = selectedCard ? "card selected" : "card";
+    const className = selectedCard ? 'card selected' : 'card';
 
     return (
       <div className={className}>
-        <div className="title">
-          {name}
-          <input type="checkbox" onClick={() => this.handleClick()}></input>
+        <div className="title row">
+          <div className="col-md-10">
+            {name}
+          </div>
+          <div className="col-md-1">
+            <input type="checkbox" onClick={this.handleCheckboxClick} />
+          </div>
         </div>
         <div className="decr"> {decr} </div>
       </div>

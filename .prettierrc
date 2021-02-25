@@ -1,7 +1,9 @@
 {
-    "endOfLine": "lf",
+    "endOfLine": "auto",
     "printWidth": 85,
     "useTabs": false,
     "tabWidth": 2,
-    "bracketSpacing": true
+    "bracketSpacing": true,
+    "arrowParens": "avoid",
+    "singleQuote": true
 }
