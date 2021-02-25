@@ -2,7 +2,7 @@ import React from 'react';
 import './Card.scss';
 import PropTypes from 'prop-types';
 
-export default class Card extends React.Component {
+class Card extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -23,10 +23,10 @@ export default class Card extends React.Component {
     return (
       <div className={className}>
         <div className="title row">
-          <div className="col-md-10">
+          <div className="col-10">
             {name}
           </div>
-          <div className="col-md-1">
+          <div className="col-1">
             <input type="checkbox" onClick={this.handleCheckboxClick} />
           </div>
         </div>
@@ -40,3 +40,5 @@ Card.propTypes = {
   name: PropTypes.string,
   decr: PropTypes.string,
 };
+
+export default Card;
