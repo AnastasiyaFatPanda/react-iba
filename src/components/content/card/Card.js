@@ -21,15 +21,15 @@ class Card extends React.Component {
   handleCheckboxClick = () => {
     const { selectedCard } = this.state;
     this.setState({ selectedCard: !selectedCard });
-  }
+  };
 
   onEdit = () => {
     this.setState({ isEdited: true, selectedCard: false });
-  }
+  };
 
   onCancel = () => {
     this.setState({ isEdited: false, selectedCard: false });
-  }
+  };
 
   onSubmit = () => {
     this.setState({
@@ -38,17 +38,17 @@ class Card extends React.Component {
       title: this.title.current.value,
       decr: this.decr.current.value,
     });
-  }
+  };
 
   render() {
     const { selectedCard, isEdited, title, decr } = this.state;
     const className = selectedCard ? 'card selected' : 'card';
 
-    if (isEdited) {
-      return (
-        <div className={className}>
+    return (
+      <div className={className}>
+        {isEdited ? (
           <div className="title row">
-            <div className="col-8">
+            <div className="col-9">
               <textarea
                 ref={this.title}
                 className="form-control textarea-title"
@@ -60,12 +60,23 @@ class Card extends React.Component {
               <FiXCircle className="fiXButton" onClick={this.onCancel} />
             </div>
             <div className="col-1 actionButton">
-              <FiCheckCircle
-                className="fiXButton"
-                onClick={this.onSubmit}
-              />
+              <FiCheckCircle className="fiXButton" onClick={this.onSubmit} />
             </div>
           </div>
+        ) : (
+          <div className="title row">
+            <div className="col-8 title-text" title={title}>
+              {title}
+            </div>
+            <div className="col-1">
+              <input type="checkbox" onClick={this.handleCheckboxClick} />
+            </div>
+            <div className="col-1 edit-button">
+              <FiEdit onClick={this.onEdit} />
+            </div>
+          </div>
+        )}
+        {isEdited ? (
           <div className="card-body">
             <textarea
               ref={this.decr}
@@ -74,24 +85,9 @@ class Card extends React.Component {
               defaultValue={decr}
             />
           </div>
-        </div>
-      );
-    }
-
-    return (
-      <div className={className}>
-        <div className="title row">
-          <div className="col-8 title-text" title={title}>
-            {title}
-          </div>
-          <div className="col-1">
-            <input type="checkbox" onClick={this.handleCheckboxClick} />
-          </div>
-          <div className="col-1">
-            <FiEdit onClick={this.onEdit} />
-          </div>
-        </div>
-        <div className="card-body decr"> {decr} </div>
+        ) : (
+          <div className="card-body decr"> {decr} </div>
+        )}
       </div>
     );
   }

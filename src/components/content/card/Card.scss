@@ -34,6 +34,7 @@
     margin: 0px;
     text-align: left;
     max-height: 70px;
+    height: 50px;
     min-width: 250px;
 
     &-text {
@@ -64,4 +65,8 @@
 
 .selected {
   background-color: rgba(134, 218, 221, 0.432) !important;
+}
+
+.edit-button {
+  top: -3px;
 }
