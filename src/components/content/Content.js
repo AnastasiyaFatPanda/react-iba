@@ -4,7 +4,7 @@ import './Content.scss';
 
 const Content = () => (
   <div className="content">
-    <Card name="First Card" decr="Something" />
+    <Card title="First Card" decr="Something" />
   </div>
 );
 
