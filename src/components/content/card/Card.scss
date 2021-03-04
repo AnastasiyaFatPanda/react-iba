@@ -9,6 +9,7 @@
   transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
   min-width: 250px;
   width: 250px;
+  margin: 15px;
 
   .textarea {
     resize: none;
@@ -49,7 +50,7 @@
     }
   }
 
-  .decr {
+  .descr {
     font-size: small;
     height: 100%;
     padding: 15px;

@@ -1,5 +1,7 @@
 .content {
-  display: flex;
-  flex-direction: row;
   margin: 2rem;
+
+  .viewOnlyCheckbox {
+    margin: 2rem;
+  }
 }
