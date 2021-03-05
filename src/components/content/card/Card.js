@@ -17,9 +17,9 @@ class Card extends React.Component {
     this.title = React.createRef();
     this.descr = React.createRef();
   }
-  
+
   componentDidUpdate(nextProps) {
-    const { viewOnly } = this.props
+    const { viewOnly } = this.props;
     if (nextProps.viewOnly !== viewOnly) {
       this.stopEdit();
     }
@@ -27,8 +27,7 @@ class Card extends React.Component {
 
   stopEdit = () => {
     this.setState({ isEdited: false });
-  }
-
+  };
 
   handleCheckboxClick = () => {
     const { selectedCard } = this.state;
@@ -40,7 +39,7 @@ class Card extends React.Component {
   };
 
   onCancel = () => {
-    this.setState({ isEdited: false, selectedCard: false });
+    this.setState({ isEdited: false });
   };
 
   onSubmit = () => {
@@ -96,9 +95,11 @@ class Card extends React.Component {
           <div className="col-1">
             <input type="checkbox" onClick={this.handleCheckboxClick} />
           </div>
-          <div className="col-1 edit-button">
-          {!viewOnly && <FiEdit onClick={this.onEdit} />}
-          </div>
+          {!viewOnly && (
+            <div className="col-1 edit-button">
+              <FiEdit onClick={this.onEdit} />
+            </div>
+          )}
         </div>
         <div className="card-body descr"> {descr} </div>
       </>
