@@ -1,6 +1,16 @@
 import React from 'react';
+import styled from 'styled-components';
 import Card from './card';
 import './Content.scss';
+
+const ViewOnlyCheckbox = styled.div`
+  margin: 2rem;
+  color: ${props => props.inputSelected ? 'LightSteelBlue' : 'LightGray'};
+
+  &:hover {
+    color: ${props => props.inputSelected ? 'CornflowerBlue' : 'Black'};
+  }
+`
 
 class Content extends React.Component {
   constructor(props) {
@@ -68,10 +78,10 @@ class Content extends React.Component {
 
     return (
       <div className="content">
-        <div className="row viewOnlyCheckbox">
+        <ViewOnlyCheckbox className="row" inputSelected={viewOnly}>
           <input id="viewOnlyCheckbox" className="form-check-input" value={viewOnly} type="checkbox" onClick={this.onViewOnlyChanged} />
           <label className="form-check-label" htmlFor="viewOnlyCheckbox">View only</label>
-        </div>
+        </ViewOnlyCheckbox>
         <div className="row">
           {cards.map(card => (<Card title={card.title} descr={card.descr} key={card.id} viewOnly={viewOnly} />))}
         </div>
