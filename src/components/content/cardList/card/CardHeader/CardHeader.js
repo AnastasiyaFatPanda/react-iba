@@ -1,5 +1,4 @@
 import React from 'react';
-import './CardHeader.scss';
 import PropTypes from 'prop-types';
 import { FiCheckCircle, FiXCircle, FiEdit } from 'react-icons/fi';
 

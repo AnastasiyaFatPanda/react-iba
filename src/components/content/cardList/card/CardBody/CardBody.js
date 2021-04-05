@@ -1,5 +1,4 @@
 import React from 'react';
-import './CardBody.scss';
 import PropTypes from 'prop-types';
 
 class CardBody extends React.Component {

@@ -1,19 +1,29 @@
-// import React from 'react';
-// import PropTypes from 'prop-types';
-// import Card from './Card'
+import React from 'react';
+import PropTypes from 'prop-types';
+import Card from './card/Card'
 
-// class CardList extends React.Component {
+const CardList = (props) => {
+    const { onSelect, viewOnly, cards } = props;
+    return (
+        <>
+            {cards.map(card => (
+                <Card
+                    title={card.title}
+                    descr={card.descr}
+                    key={card.id}
+                    id={card.id}
+                    viewOnly={viewOnly}
+                    isSelected={card.selected}
+                    onSelect={onSelect} />
+            ))}
+        </>
+    );
+}
 
-// }
+CardList.propTypes = {
+    viewOnly: PropTypes.bool,
+    cards: PropTypes.array,
+    onSelect: PropTypes.func,
+};
 
-// CardList.propTypes = {
-//     viewOnly: PropTypes.bool,
-//     cards: PropTypes.array,
-//     // title: PropTypes.string,
-//     // descr: PropTypes.string,
-//     // selected: PropTypes.bool,
-//     // onSelect: PropTypes.func,
-//     // id: PropTypes.number,
-//   };
-  
-//   export default CardList;
+export default CardList;

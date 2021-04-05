@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import Card from './cardList/card';
+import CardList from './cardList';
 import './Content.scss';
 
 const ViewOnlyCheckbox = styled.div`
@@ -86,7 +86,7 @@ class Content extends React.Component {
   onDelete = () => {
     const { cards } = this.state;
     const deleteCards = cards.filter(card => !card.selected);
-    this.setState({ cards: deleteCards });
+    this.setState({ cards: deleteCards, isDisabled: true });
   }
 
   onSelect = ({ id, title, descr, selected }) => {
@@ -116,16 +116,11 @@ class Content extends React.Component {
             </button>
         </div>
         <div className="row">
-          {cards.map(card => (
-            <Card
-              title={card.title}
-              descr={card.descr}
-              key={card.id}
-              id={card.id}
-              viewOnly={viewOnly}
-              isSelected={card.selected}
-              onSelect={this.onSelect} />
-          ))}
+          <CardList
+            cards={cards}
+            viewOnly={viewOnly}
+            onSelect={this.onSelect}
+          />
         </div>
       </div>
     );
