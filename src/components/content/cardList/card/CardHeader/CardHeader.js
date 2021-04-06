@@ -22,44 +22,44 @@ class CardHeader extends React.Component {
     returnToInitial = () => {
         const { title } = this.props;
         this.setState({ title });
-    }
+    };
 
     onChange = newTitle => {
         this.setState({ title: newTitle?.target?.value });
-    }
+    };
 
     onCancel = () => {
         const { onCancel, title } = this.props;
         onCancel();
         this.setState({ title });
-    }
+    };
 
     renderEditable = () => {
         const { title } = this.state;
         const { onSubmit } = this.props;
 
-        return (<div className="title row">
-            <div className="col-8">
-                <textarea
-                    className="form-control textarea-title"
-                    type="text"
-                    value={title}
-                    onChange={this.onChange}
-                />
+        return (
+            <div className="title row">
+                <div className="col-8">
+                    <textarea
+                        className="form-control textarea-title"
+                        type="text"
+                        value={title}
+                        onChange={this.onChange}
+                    />
+                </div>
+                <div className="col-1 actionButton">
+                    <FiXCircle className="fiXButton" onClick={this.onCancel} />
+                </div>
+                <div className="col-1 actionButton">
+                    <FiCheckCircle
+                        className="fiXButton"
+                        onClick={() => onSubmit({ title })}
+                    />
+                </div>
             </div>
-            <div className="col-1 actionButton">
-                <FiXCircle
-                    className="fiXButton"
-                    onClick={this.onCancel} />
-            </div>
-            <div className="col-1 actionButton">
-                <FiCheckCircle
-                    className="fiXButton"
-                    onClick={() => onSubmit({ title })} />
-            </div>
-        </div>
-        )
-    }
+        );
+    };
 
     renderNotEditable = () => {
         const { title } = this.state;
@@ -79,12 +79,14 @@ class CardHeader extends React.Component {
                     </div>
                 )}
             </div>
-        )
-    }
+        );
+    };
 
     render() {
         const { viewOnly, isEdited } = this.props;
-        return isEdited && !viewOnly ? this.renderEditable() : this.renderNotEditable();
+        return isEdited && !viewOnly
+            ? this.renderEditable()
+            : this.renderNotEditable();
     }
 }
 

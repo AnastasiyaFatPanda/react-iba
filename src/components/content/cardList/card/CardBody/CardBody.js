@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 class CardBody extends React.Component {
     constructor(props) {
         super(props);
-        const { descr, } = this.props;
+        const { descr } = this.props;
         this.state = {
             descr,
         };
@@ -21,11 +21,11 @@ class CardBody extends React.Component {
     returnToInitial = () => {
         const { descr } = this.props;
         this.setState({ descr });
-    }
+    };
 
     onChange = newDescription => {
         this.setState({ descr: newDescription?.target?.value });
-    }
+    };
 
     renderEditable = () => {
         const { descr } = this.state;
@@ -38,17 +38,19 @@ class CardBody extends React.Component {
                     onChange={this.onChange}
                 />
             </div>
-        )
-    }
+        );
+    };
 
     renderNotEditable = () => {
         const { descr } = this.state;
-        return (<div className="card-body descr"> {descr} </div>);
-    }
+        return <div className="card-body descr"> {descr} </div>;
+    };
 
     render() {
         const { viewOnly, isEdited } = this.props;
-        return isEdited && !viewOnly ? this.renderEditable() : this.renderNotEditable();
+        return isEdited && !viewOnly
+            ? this.renderEditable()
+            : this.renderNotEditable();
     }
 }
 
