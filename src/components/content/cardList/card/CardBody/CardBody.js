@@ -1,4 +1,5 @@
 import React from 'react';
+import './CardBody.scss';
 import PropTypes from 'prop-types';
 
 class CardBody extends React.Component {
@@ -30,20 +31,18 @@ class CardBody extends React.Component {
     renderEditable = () => {
         const { descr } = this.state;
         return (
-            <div className="card-body">
-                <textarea
-                    className="form-control textarea"
-                    type="text"
-                    value={descr}
-                    onChange={this.onChange}
-                />
-            </div>
+            <textarea
+                className="form-control textarea"
+                type="text"
+                value={descr}
+                onChange={this.onChange}
+            />
         );
     };
 
     renderNotEditable = () => {
         const { descr } = this.state;
-        return <div className="card-body descr"> {descr} </div>;
+        return <div className="descr"> {descr} </div>;
     };
 
     render() {
