@@ -84,20 +84,21 @@ class Content extends React.Component {
     };
 
     onDelete = () => {
-        const { cards } = this.state;
-        const deleteCards = cards.filter(card => !card.selected);
-        this.setState({ cards: deleteCards, isDisabled: true });
+        this.setState(prevState => ({
+            cards: prevState.cards.filter(card => !card.selected),
+            isDisabled: true,
+        }));
     };
 
-    onSelect = ({ id, title, descr, selected }) => {
-        const { cards } = this.state;
-        const newCards = cards.map(card =>
-            card.id === id ? { id, title, descr, selected } : card
-        );
-        this.setState({
-            cards: newCards,
-            isDisabled: !newCards.some(card => card.selected),
-        });
+    onSelect = ({ id, selected }) => {
+        this.setState(prevState => ({
+            cards: prevState.cards.map(card =>
+                card.id === id ? { ...card, selected } : card
+            ),
+            isDisabled: !prevState.cards
+                .map(card => (card.id === id ? { ...card, selected } : card))
+                .some(card => card.selected),
+        }));
     };
 
     render() {
