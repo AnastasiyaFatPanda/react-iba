@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { v4 as uuidv4 } from 'uuid';
 import CardList from './cardList';
 import './Content.scss';
 
@@ -17,55 +18,55 @@ class Content extends React.Component {
         super(props);
         const cards = [
             {
-                id: 1,
+                id: uuidv4(),
                 title: 'First Card',
                 descr: 'Description',
                 selected: false,
             },
             {
-                id: 2,
+                id: uuidv4(),
                 title: 'Second Card',
                 descr: 'Description',
                 selected: false,
             },
             {
-                id: 3,
+                id: uuidv4(),
                 title: 'Third Card',
                 descr: 'Description',
                 selected: false,
             },
             {
-                id: 4,
+                id: uuidv4(),
                 title: 'Fourth Card',
                 descr: 'Description',
                 selected: false,
             },
             {
-                id: 5,
+                id: uuidv4(),
                 title: 'Fifth Card',
                 descr: 'Description',
                 selected: false,
             },
             {
-                id: 6,
+                id: uuidv4(),
                 title: 'Sixth Card',
                 descr: 'Description',
                 selected: false,
             },
             {
-                id: 7,
+                id: uuidv4(),
                 title: 'Seventh Card',
                 descr: 'Description',
                 selected: false,
             },
             {
-                id: 8,
+                id: uuidv4(),
                 title: 'Eighth Card',
                 descr: 'Description',
                 selected: false,
             },
             {
-                id: 9,
+                id: uuidv4(),
                 title: 'Ninth Card',
                 descr: 'Description',
                 selected: false,
@@ -87,6 +88,17 @@ class Content extends React.Component {
         this.setState(prevState => ({
             cards: prevState.cards.filter(card => !card.selected),
             isDisabled: true,
+        }));
+    };
+
+    onCreate = () => {
+        this.setState(prevState => ({
+            cards: prevState.cards.concat([{
+                id: uuidv4(),
+                title: 'New Card',
+                descr: 'Description',
+                selected: false,
+            }]),
         }));
     };
 
@@ -129,6 +141,13 @@ class Content extends React.Component {
                         onClick={this.onDelete}
                     >
                         Delete selected
+                    </button>
+                    <button
+                        className="btn btn-dark"
+                        type="button"
+                        onClick={this.onCreate}
+                    >
+                        Create a new card
                     </button>
                 </div>
                 <div className="row">

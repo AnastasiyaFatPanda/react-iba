@@ -88,7 +88,7 @@ Card.propTypes = {
     descr: PropTypes.string,
     selected: PropTypes.bool,
     onSelect: PropTypes.func,
-    id: PropTypes.number,
+    id: PropTypes.string,
 };
 
 export default Card;
