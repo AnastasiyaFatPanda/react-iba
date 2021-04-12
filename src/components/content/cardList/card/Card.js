@@ -60,44 +60,23 @@ class Card extends React.Component {
         const className = selectedCard ? 'card selected' : 'card';
         return (
             <div className={className}>
-                {isEdited ? (
-                    <>
-                        <CardHeader
-                            ref={this.cardHeaderRef}
-                            title={title}
-                            viewOnly={viewOnly}
-                            onCancel={this.onCancel}
-                            onSubmit={this.onSubmit}
-                            isEdited={isEdited}
-                        />
-                        <CardBody
-                            ref={this.cardBodyRef}
-                            descr={descr}
-                            viewOnly={viewOnly}
-                            isEdited={isEdited}
-                            onCancel={this.onCancel}
-                        />
-                    </>
-                ) : (
-                    <>
-                        <CardHeader
-                            ref={this.cardHeaderRef}
-                            title={title}
-                            viewOnly={viewOnly}
-                            isEdited={isEdited}
-                            handleCheckboxClick={this.handleCheckboxClick}
-                            onEdit={this.onEdit}
-                            onCancel={this.onCancel}
-                        />
-                        <CardBody
-                            ref={this.cardBodyRef}
-                            descr={descr}
-                            viewOnly={viewOnly}
-                            isEdited={isEdited}
-                            onCancel={this.onCancel}
-                        />
-                    </>
-                )}
+                <CardHeader
+                    ref={this.cardHeaderRef}
+                    title={title}
+                    viewOnly={viewOnly}
+                    isEdited={isEdited}
+                    handleCheckboxClick={this.handleCheckboxClick}
+                    onEdit={this.onEdit}
+                    onCancel={this.onCancel}
+                    onSubmit={this.onSubmit}
+                />
+                <CardBody
+                    ref={this.cardBodyRef}
+                    descr={descr}
+                    viewOnly={viewOnly}
+                    isEdited={isEdited}
+                    onCancel={this.onCancel}
+                />
             </div>
         );
     }

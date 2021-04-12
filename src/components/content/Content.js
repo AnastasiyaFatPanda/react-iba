@@ -91,14 +91,15 @@ class Content extends React.Component {
     };
 
     onSelect = ({ id, selected }) => {
-        this.setState(prevState => ({
-            cards: prevState.cards.map(card =>
+        this.setState(prevState => {
+            const newCards = prevState.cards.map(card =>
                 card.id === id ? { ...card, selected } : card
-            ),
-            isDisabled: !prevState.cards
-                .map(card => (card.id === id ? { ...card, selected } : card))
-                .some(card => card.selected),
-        }));
+            );
+            return {
+                cards: newCards,
+                isDisabled: !newCards.some(card => card.selected),
+            };
+        });
     };
 
     render() {
