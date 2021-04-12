@@ -1,0 +1,35 @@
+.card {
+    background-color: rgba(211, 211, 211, 0.432);
+    border-color: rgba(0, 0, 0, 0.692);
+    border-radius: 5%;
+    border-width: 2px;
+    box-shadow: 15px 15px 27px #e1e1e3, -15px -15px 27px #ffffff;
+    height: 250px;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+    min-width: 250px;
+    width: 250px;
+    margin: 15px;
+
+    .textarea {
+        resize: none;
+        height: 100%;
+
+        &-title {
+            resize: none;
+            height: 65%;
+        }
+    }
+}
+
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.selected {
+    background-color: rgba(134, 218, 221, 0.432) !important;
+}
+
+.edit-button {
+    top: -3px;
+}

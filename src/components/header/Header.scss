@@ -1,16 +1,16 @@
 .header {
-  align-items: center;
-  background: black;
-  display: flex;
-  flex-direction: row;
+    align-items: center;
+    background: black;
+    display: flex;
+    flex-direction: row;
 
-  img {
-    box-sizing: unset;
-    height: 30px;
-    padding: 15px;
-  }
+    img {
+        box-sizing: unset;
+        height: 30px;
+        padding: 15px;
+    }
 
-  .title {
-    color: white;
-  }
+    .title {
+        color: white;
+    }
 }
