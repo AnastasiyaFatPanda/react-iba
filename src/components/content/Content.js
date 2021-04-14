@@ -93,12 +93,14 @@ class Content extends React.Component {
 
     onCreate = () => {
         this.setState(prevState => ({
-            cards: prevState.cards.concat([{
-                id: uuidv4(),
-                title: 'New Card',
-                descr: 'Description',
-                selected: false,
-            }]),
+            cards: prevState.cards.concat([
+                {
+                    id: uuidv4(),
+                    title: 'New Card',
+                    descr: 'Description',
+                    selected: false,
+                },
+            ]),
         }));
     };
 
