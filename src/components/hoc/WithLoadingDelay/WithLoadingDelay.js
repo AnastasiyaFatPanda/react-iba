@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const SpinnerDiv = styled.div`
@@ -8,7 +7,7 @@ const SpinnerDiv = styled.div`
     width: 250px;
 `;
 
-const WithLoadingDelay = props => {
+const withLoadingDelay = (WrappedComponent) => props => {
     const [isLoaded, setIsLoaded] = useState(false);
 
     useEffect(() => {
@@ -17,15 +16,9 @@ const WithLoadingDelay = props => {
         }, 2000);
     }, []);
 
-    return isLoaded ? (
-        props.children
-    ) : (
-        <SpinnerDiv className="spinner-border" role="status" />
-    );
-};
+    return isLoaded
+        ? (<WrappedComponent {...props} />)
+        : (<SpinnerDiv className="spinner-border" role="status" />);
+}
 
-WithLoadingDelay.propTypes = {
-    children: PropTypes.element.isRequired,
-};
-
-export default WithLoadingDelay;
+export default withLoadingDelay;

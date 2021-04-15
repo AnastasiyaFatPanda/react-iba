@@ -3,6 +3,7 @@ import './Card.scss';
 import PropTypes from 'prop-types';
 import CardHeader from './CardHeader';
 import CardBody from './CardBody';
+import withLoadingDelay from '../../../hoc/withLoadingDelay';
 
 class Card extends React.Component {
     constructor(props) {
@@ -91,4 +92,4 @@ Card.propTypes = {
     id: PropTypes.string,
 };
 
-export default Card;
+export default withLoadingDelay(Card);

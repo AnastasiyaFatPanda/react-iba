@@ -1,3 +1,3 @@
-import WithLoadingDelay from './WithLoadingDelay';
+import withLoadingDelay from './withLoadingDelay';
 
-export default WithLoadingDelay;
+export default withLoadingDelay;
