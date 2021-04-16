@@ -3,7 +3,7 @@ import './Card.scss';
 import PropTypes from 'prop-types';
 import CardHeader from './CardHeader';
 import CardBody from './CardBody';
-import withLoadingDelay from '../../../hoc/withLoadingDelay';
+import withLoadingDelay from '../../../hoc/WithLoadingDelay';
 
 class Card extends React.Component {
     constructor(props) {

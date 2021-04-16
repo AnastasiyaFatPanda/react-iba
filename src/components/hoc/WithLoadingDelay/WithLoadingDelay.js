@@ -7,7 +7,7 @@ const SpinnerDiv = styled.div`
     width: 250px;
 `;
 
-const withLoadingDelay = (WrappedComponent) => props => {
+const withLoadingDelay = WrappedComponent => props => {
     const [isLoaded, setIsLoaded] = useState(false);
 
     useEffect(() => {
@@ -17,8 +17,8 @@ const withLoadingDelay = (WrappedComponent) => props => {
     }, []);
 
     return isLoaded
-        ? (<WrappedComponent {...props} />)
-        : (<SpinnerDiv className="spinner-border" role="status" />);
+        ? <WrappedComponent {...props} />
+        : <SpinnerDiv className="spinner-border" role="status" />;
 }
 
 export default withLoadingDelay;
