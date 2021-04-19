@@ -1,8 +1,14 @@
 .header {
-    align-items: center;
+    align-items: flex-start;
     background: black;
     display: flex;
     flex-direction: row;
+    text-align: left;
+
+    .counter {
+        padding: 15px;
+        text-align: center;
+    }
 
     img {
         box-sizing: unset;
@@ -10,7 +16,7 @@
         padding: 15px;
     }
 
-    .title {
+    .header-title {
         color: white;
     }
 }
