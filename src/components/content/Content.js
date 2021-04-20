@@ -15,16 +15,16 @@ const ViewOnlyCheckbox = styled.div`
 
 const Content = () =>
 (<CardsContextConsumer>
-    {(context) => (
+    {({ viewOnly, onViewOnlyChanged, isDisabled, onDelete, onCreate, cards, onSelect }) => (
         <div className="content">
             <div className="row">
-                <ViewOnlyCheckbox inputSelected={context.viewOnly}>
+                <ViewOnlyCheckbox inputSelected={viewOnly}>
                     <input
                         id="viewOnlyCheckbox"
                         className="form-check-input"
-                        value={context.viewOnly}
+                        value={viewOnly}
                         type="checkbox"
-                        onClick={context.onViewOnlyChanged}
+                        onClick={onViewOnlyChanged}
                     />
                     <label
                         className="form-check-label"
@@ -36,24 +36,24 @@ const Content = () =>
                 <button
                     className="btn btn-dark"
                     type="button"
-                    disabled={context.isDisabled}
-                    onClick={context.onDelete}
+                    disabled={isDisabled}
+                    onClick={onDelete}
                 >
                     Delete selected
                     </button>
                 <button
                     className="btn btn-dark"
                     type="button"
-                    onClick={context.onCreate}
+                    onClick={onCreate}
                 >
                     Create a new card
                     </button>
             </div>
             <div className="row">
                 <CardList
-                    cards={context.cards}
-                    viewOnly={context.viewOnly}
-                    onSelect={context.onSelect}
+                    cards={cards}
+                    viewOnly={viewOnly}
+                    onSelect={onSelect}
                 />
             </div>
         </div>
