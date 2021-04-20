@@ -1,12 +1,12 @@
 import React from 'react';
 import './Header.scss';
 import logo from '../../logo.svg';
-import {CardsContextConsumer} from '../../context/CardsContext';
+import { CardsContextConsumer } from '../../context/CardsContext';
 
 const Header = () => (
     <CardsContextConsumer>
         {
-            (context) =>
+            ({ countCards }) =>
             (<div className="header row">
                 <div className="col-10">
                     <img src={logo} alt="Logo" />
@@ -16,7 +16,7 @@ const Header = () => (
                 </div>
                 <div className="col-2 counter">
                     <span className="badge badge-light">
-                        {context.countCards}
+                        {countCards}
                     </span>
                 </div>
             </div>)
