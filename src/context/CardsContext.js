@@ -1,74 +1,33 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { v4 as uuidv4 } from 'uuid';
+import axios from 'axios';
 
 const { Provider, Consumer } = React.createContext();
+const URL = 'https://raw.githubusercontent.com/BrunnerLivio/PokemonDataGraber/master/output.json';
 
 class CardsContextProvider extends React.Component {
     constructor(props) {
         super(props);
-        const cards = [
-            {
-                id: uuidv4(),
-                title: 'First Card',
-                descr: 'Description',
-                selected: false,
-            },
-            {
-                id: uuidv4(),
-                title: 'Second Card',
-                descr: 'Description',
-                selected: false,
-            },
-            {
-                id: uuidv4(),
-                title: 'Third Card',
-                descr: 'Description',
-                selected: false,
-            },
-            {
-                id: uuidv4(),
-                title: 'Fourth Card',
-                descr: 'Description',
-                selected: false,
-            },
-            {
-                id: uuidv4(),
-                title: 'Fifth Card',
-                descr: 'Description',
-                selected: false,
-            },
-            {
-                id: uuidv4(),
-                title: 'Sixth Card',
-                descr: 'Description',
-                selected: false,
-            },
-            {
-                id: uuidv4(),
-                title: 'Seventh Card',
-                descr: 'Description',
-                selected: false,
-            },
-            {
-                id: uuidv4(),
-                title: 'Eighth Card',
-                descr: 'Description',
-                selected: false,
-            },
-            {
-                id: uuidv4(),
-                title: 'Ninth Card',
-                descr: 'Description',
-                selected: false,
-            },
-        ];
         this.state = {
             viewOnly: false,
-            cards,
+            cards: [],
             isDisabled: true,
-            countCards: cards.length
+            countCards: 0
         };
+    }
+
+    componentDidMount() {
+        axios.get(URL).then((response) => {
+            const cards = response.data.slice(0, 15)
+                .map((card) => ({
+                    id: uuidv4(),
+                    title: card.Name,
+                    descr: card.About,
+                    selected: false
+                }));
+            this.setState({ cards, countCards: cards.length })
+        });
     }
 
     onViewOnlyChanged = () => {
