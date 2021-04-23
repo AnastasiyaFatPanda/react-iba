@@ -4,6 +4,7 @@ import { v4 as uuidv4 } from 'uuid';
 import axios from 'axios';
 
 const { Provider, Consumer } = React.createContext();
+const url = 'https://raw.githubusercontent.com/BrunnerLivio/PokemonDataGraber/master/output.json';
 
 class CardsContextProvider extends React.Component {
     constructor(props) {
@@ -17,7 +18,6 @@ class CardsContextProvider extends React.Component {
     }
 
     componentDidMount() {
-        const url = 'https://raw.githubusercontent.com/BrunnerLivio/PokemonDataGraber/master/output.json';
         axios.get(url).then((response) => {
             const cards = response.data.slice(0, 15)
                 .map((card) => ({
