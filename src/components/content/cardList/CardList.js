@@ -13,7 +13,7 @@ const CardList = ({ onSelect, viewOnly, cards }) =>
             isSelected={card.selected}
             onSelect={onSelect}
         />
-    ))
+    ));
 
 CardList.propTypes = {
     viewOnly: PropTypes.bool,
