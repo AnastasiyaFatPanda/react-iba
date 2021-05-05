@@ -22,7 +22,7 @@ const Content = () =>
                     <input
                         id="viewOnlyCheckbox"
                         className="form-check-input"
-                        value={viewOnly}
+                        checked={viewOnly}
                         type="checkbox"
                         onClick={onViewOnlyChanged}
                     />
