@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Card from './card';
 
-const CardList = ({ onSelect, viewOnly, cards }) =>
+const CardList = ({ onSelect, onChange, viewOnly, cards }) =>
     cards.map(card => (
         <Card
             title={card.title}
@@ -12,6 +12,7 @@ const CardList = ({ onSelect, viewOnly, cards }) =>
             viewOnly={viewOnly}
             isSelected={card.selected}
             onSelect={onSelect}
+            onChange={onChange}
         />
     ));
 
