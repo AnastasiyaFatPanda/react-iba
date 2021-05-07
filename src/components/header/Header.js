@@ -9,22 +9,24 @@ const Header = () => (
         {
             ({ countCards }) =>
             (<div className="header row">
-                <div className="col-8">
+                <div className="col-3">
                     <img src={logo} alt="Logo" />
                     <span className="header-title">
                         Learning React
                 </span>
                 </div>
-                <div className="col-4 counter">
-                    <span className="badge badge-light">
-                        {countCards}
-                    </span>
+                <div className="col-6 counter">
                     <Link className="btn btn-light" to="/" exact>
                         Home
                     </Link>
                     <Link className="btn btn-light" to="/login">
                         Log In
                     </Link>
+                </div>
+                <div className="col-3 counter">
+                    <span className="badge badge-light">
+                        {countCards}
+                    </span>
                 </div>
             </div>)
         }

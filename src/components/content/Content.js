@@ -24,7 +24,7 @@ const Content = () =>
                         className="form-check-input"
                         checked={viewOnly}
                         type="checkbox"
-                        onClick={onViewOnlyChanged}
+                        onChange={onViewOnlyChanged}
                     />
                     <label
                         className="form-check-label"

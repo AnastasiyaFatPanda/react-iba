@@ -4,6 +4,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Content from './components/content';
 import LogIn from './components/login';
 import Header from './components/header';
+import NotFound from './components/notFound';
 import { CardsContextProvider } from './context/CardsContext';
 
 class App extends React.Component {
@@ -26,13 +27,11 @@ class App extends React.Component {
                         <Header />
                         <Switch>
                             {auth
-                                ? <Route path="/" exact> <Content /> </Route>
-                                : <Route path="/" exact> <LogIn logIn={() => this.logIn()} /> </Route>
+                                ? <Route path="/" exact component={Content} />
+                                : <Route path="/" exact> <LogIn logIn={this.logIn} /> </Route>
                             }
-                            <Route path="/login"  >
-                                <LogIn />
-                            </Route>                            
-                            <Route render={() => <h1>404: Not found</h1>} />
+                            <Route path="/login"> <LogIn logIn={this.logIn} /> </Route>
+                            <Route component={NotFound} />
                         </Switch>
                     </CardsContextProvider>
                 </BrowserRouter>

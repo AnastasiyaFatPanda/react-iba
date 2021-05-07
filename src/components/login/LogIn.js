@@ -8,11 +8,22 @@ const LogIn = ({ logIn }) =>
     <form className="logIn_form">
         <div className="form-group">
             <label htmlFor="exampleInputEmail1">Email address</label>
-            <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />
+            <input
+                id="exampleInputEmail1"
+                type="email"
+                className="form-control"
+                aria-describedby="emailHelp"
+                placeholder="Enter email"
+                autoComplete="on" />
         </div>
         <div className="form-group">
             <label htmlFor="exampleInputPassword1">Password</label>
-            <input type="password" className="form-control" id="exampleInputPassword1" placeholder="Password" />
+            <input
+                id="exampleInputPassword1"
+                type="password"
+                className="form-control"
+                placeholder="Password"
+                autoComplete="on" />
         </div>
 
         <Link className="btn btn-light" to="/" onClick={logIn}>
