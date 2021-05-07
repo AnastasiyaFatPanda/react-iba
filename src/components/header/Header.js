@@ -16,7 +16,7 @@ const Header = () => (
                 </span>
                 </div>
                 <div className="col-6 counter">
-                    <Link className="btn btn-light" to="/" exact>
+                    <Link className="btn btn-light" to="/">
                         Home
                     </Link>
                     <Link className="btn btn-light" to="/login">
