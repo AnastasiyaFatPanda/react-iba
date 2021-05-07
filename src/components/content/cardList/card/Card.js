@@ -48,11 +48,20 @@ class Card extends React.Component {
     };
 
     onSubmit = newValue => {
+        const { onChange, id } = this.props;
         this.setState({
             isEdited: false,
             descr: this.cardBodyRef.current.state.descr,
             ...newValue,
         });
+        onChange({
+            id,
+            newCard: {
+                isEdited: false,
+                descr: this.cardBodyRef.current.state.descr,
+                ...newValue,
+            }
+        })
     };
 
     render() {
@@ -89,6 +98,7 @@ Card.propTypes = {
     descr: PropTypes.string,
     selected: PropTypes.bool,
     onSelect: PropTypes.func,
+    onChange: PropTypes.func,
     id: PropTypes.string,
 };
 

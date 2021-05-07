@@ -69,6 +69,18 @@ class CardsContextProvider extends React.Component {
         });
     };
 
+    onChange = ({ id, newCard }) => {
+        this.setState(prevState => {
+            const newCards = prevState.cards.map(card =>
+                card.id === id ? { ...card, ...newCard } : card
+            );
+            return {
+                cards: newCards,
+                isDisabled: !newCards.some(card => card.selected),
+            };
+        });
+    };
+
     render() {
         const { children } = this.props;
         return <Provider
@@ -78,6 +90,7 @@ class CardsContextProvider extends React.Component {
                 onDelete: this.onDelete,
                 onCreate: this.onCreate,
                 onSelect: this.onSelect,
+                onChange: this.onChange,
             }}>
             {children}
         </Provider>;

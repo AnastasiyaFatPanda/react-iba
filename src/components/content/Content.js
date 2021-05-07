@@ -15,16 +15,16 @@ const ViewOnlyCheckbox = styled.div`
 
 const Content = () =>
 (<CardsContextConsumer>
-    {({ viewOnly, onViewOnlyChanged, isDisabled, onDelete, onCreate, cards, onSelect }) => (
+    {({ viewOnly, onViewOnlyChanged, isDisabled, onDelete, onCreate, cards, onSelect, onChange }) => (
         <div className="content">
             <div className="row">
                 <ViewOnlyCheckbox inputSelected={viewOnly}>
                     <input
                         id="viewOnlyCheckbox"
                         className="form-check-input"
-                        value={viewOnly}
+                        checked={viewOnly}
                         type="checkbox"
-                        onClick={onViewOnlyChanged}
+                        onChange={onViewOnlyChanged}
                     />
                     <label
                         className="form-check-label"
@@ -54,6 +54,7 @@ const Content = () =>
                     cards={cards}
                     viewOnly={viewOnly}
                     onSelect={onSelect}
+                    onChange={onChange}
                 />
             </div>
         </div>
