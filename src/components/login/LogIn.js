@@ -61,8 +61,7 @@ class LogIn extends React.Component {
         }
 
         if (rules.isPassword) {
-            // const pattern = /^(?=.*?[0-9])(?=.*?[A-Za-z])(?=.*[^0-9A-Za-z]).+$/;
-            const pattern = /^(\w| )*[0-9A-Za-z](\w| )*$/;
+            const pattern = /(?=.*[0-9])(?=.*[a-zA-Z])[0-9a-zA-Z!@#$%^&*]/g;
             isValid = pattern.test(value) && isValid;
         }
 
