@@ -2,8 +2,7 @@ import React from 'react';
 import './Input.scss';
 import PropTypes from 'prop-types';
 
-const Input = props => {
-    const { placeholder, type, value, onChange, onBlur, valid, touched } = props;
+const Input = ({ placeholder, type, value, onChange, onBlur, valid, touched }) => {
     const error = !valid && touched;
     return (
         <div className="form-group">
