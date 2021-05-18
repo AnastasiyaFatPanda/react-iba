@@ -98,16 +98,16 @@ class LogIn extends React.Component {
 
         return (
             <form className="logIn_form">
-                {logInForm.map((formElement) =>
+                {logInForm.map(({ id, placeholder, type, value, valid, touched }) =>
                     <Input
-                        key={formElement.id}
-                        placeholder={formElement.placeholder}
-                        type={formElement.type}
-                        value={formElement.value}
-                        valid={formElement.valid}
-                        touched={formElement.touched}
-                        onBlur={() => this.inputOnBlurHandler(formElement.id)}
-                        onChange={(event) => this.inputOnChangeHandler(event, formElement.id)}
+                        key={id}
+                        placeholder={placeholder}
+                        type={type}
+                        value={value}
+                        valid={valid}
+                        touched={touched}
+                        onBlur={() => this.inputOnBlurHandler(id)}
+                        onChange={(event) => this.inputOnChangeHandler(event, id)}
                     />
                 )}
                 <Link to="/">
