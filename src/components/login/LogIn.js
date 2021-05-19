@@ -56,7 +56,7 @@ class LogIn extends React.Component {
         }
 
         if (rules.isEmail) {
-            const pattern = /^[\w-.]+@([\w-]+\.)+[\w-]{2,5}$/;
+            const pattern = /^[\w-.]+@([A-Za-z]+\.)+[A-Za-z]{2,5}$/;
             isValid = pattern.test(value) && isValid;
         }
 
