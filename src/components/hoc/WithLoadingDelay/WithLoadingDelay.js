@@ -12,7 +12,12 @@ const withLoadingDelay = WrappedComponent => props => {
 
     useEffect(() => {
         setTimeout(() => {
-            setIsLoaded(true);
+            try {
+                setIsLoaded(true);
+            } catch (e) {
+                // eslint-disable-next-line no-console
+                console.warn('Component is already destroyed');
+            }
         }, 2000);
     }, []);
 
