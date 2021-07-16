@@ -1,9 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useHistory } from 'react-router-dom';
 import Card from './card';
 
-const CardList = ({ onSelect, onChange, viewOnly, cards }) =>
-    cards.map(card => (
+const CardList = ({ onSelect, onChange, viewOnly, cards }) => {
+    const history = useHistory();
+    
+    return cards.map(card => (
         <Card
             title={card.title}
             descr={card.descr}
@@ -13,8 +16,10 @@ const CardList = ({ onSelect, onChange, viewOnly, cards }) =>
             isSelected={card.selected}
             onSelect={onSelect}
             onChange={onChange}
+            history={history}
         />
-    ));
+    ))
+};
 
 CardList.propTypes = {
     viewOnly: PropTypes.bool,
