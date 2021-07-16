@@ -64,12 +64,20 @@ class Card extends React.Component {
         })
     };
 
-    render() {
+    doubleClickHandler = id => {
         const { viewOnly } = this.props;
+        if (!viewOnly) {
+            const { history } = this.props;
+            history.push(`/card/${id}`);
+        }
+    };
+
+    render() {
+        const { viewOnly, id } = this.props;
         const { selectedCard, title, descr, isEdited } = this.state;
         const className = selectedCard ? 'card selected' : 'card';
         return (
-            <div className={className}>
+            <div className={className} onDoubleClick={() => this.doubleClickHandler(id)}>
                 <CardHeader
                     ref={this.cardHeaderRef}
                     title={title}
@@ -100,6 +108,7 @@ Card.propTypes = {
     onSelect: PropTypes.func,
     onChange: PropTypes.func,
     id: PropTypes.string,
+    history: PropTypes.any,
 };
 
 export default withLoadingDelay(Card);
