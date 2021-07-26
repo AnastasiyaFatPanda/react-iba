@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import CardList from './cardList';
 import './Content.scss';
-import { updateCard, selectCard, deleteCard, createCard, viewOnlyChange, fetchCards } from '../../redux/actions';
+import { deleteCard, createCard, viewOnlyChange, fetchCards } from '../../redux/actions/actions';
 
 const ViewOnlyCheckbox = styled.div`
     margin-left: 3rem;
@@ -25,11 +25,8 @@ class Content extends React.Component {
 
     render() {
         const {
-            cards,
             isDisabled,
             viewOnly,
-            updateCardHandle,
-            selectCardHandle,
             deleteCardHandle,
             createCardHandle,
             viewOnlyChangeHandle
@@ -69,12 +66,7 @@ class Content extends React.Component {
                     </button>
                 </div>
                 <div className="row">
-                    <CardList
-                        cards={cards}
-                        viewOnly={viewOnly}
-                        onSelect={selectCardHandle}
-                        onChange={updateCardHandle}
-                    />
+                    <CardList />
                 </div>
             </div>
         )
@@ -85,8 +77,6 @@ Content.propTypes = {
     viewOnly: PropTypes.bool,
     isDisabled: PropTypes.bool,
     cards: PropTypes.array,
-    updateCardHandle: PropTypes.func,
-    selectCardHandle: PropTypes.func,
     deleteCardHandle: PropTypes.func,
     createCardHandle: PropTypes.func,
     viewOnlyChangeHandle: PropTypes.func,
@@ -99,8 +89,6 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = {
-    updateCardHandle: updateCard,
-    selectCardHandle: selectCard,
     deleteCardHandle: deleteCard,
     createCardHandle: createCard,
     viewOnlyChangeHandle: viewOnlyChange,

@@ -15,8 +15,8 @@ const URL = 'https://raw.githubusercontent.com/BrunnerLivio/PokemonDataGraber/ma
 
 export const createCard = () => ({ type: CREATE_CARD });
 export const deleteCard = () => ({ type: DELETE_CARD });
-export const selectCard = (card) => ({ type: SELECT_CARD, payload: card });
-export const updateCard = (newCard) => ({ type: UPDATE_CARD, payload: newCard });
+export const selectCard = card => ({ type: SELECT_CARD, payload: card });
+export const updateCard = newCard => ({ type: UPDATE_CARD, payload: newCard });
 export const fetchCards = () => dispatch => {
     dispatch({
         type: FETCH_CARD_START
@@ -26,7 +26,7 @@ export const fetchCards = () => dispatch => {
             dispatch({
                 type: FETCH_CARD_SUCCESS,
                 payload: {
-                    cards: response.data.slice(0, 5)
+                    cards: response.data.slice(0, 15)
                         .map((card) => ({
                             id: uuidv4(),
                             title: card.Name,

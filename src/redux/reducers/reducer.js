@@ -8,7 +8,7 @@ import {
     FETCH_CARD_SUCCESS,
     FETCH_CARD_FAIL,
     VIEW_ONLY,
-} from './types';
+} from '../actions/types';
 
 const initialState = {
     cards: [],

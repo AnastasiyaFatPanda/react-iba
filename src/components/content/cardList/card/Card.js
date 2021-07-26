@@ -1,9 +1,11 @@
 import React from 'react';
 import './Card.scss';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import CardHeader from './CardHeader';
 import CardBody from './CardBody';
 import withLoadingDelay from '../../../hoc/WithLoadingDelay';
+import { updateCard, selectCard } from '../../../../redux/actions/actions';
 
 class Card extends React.Component {
     constructor(props) {
@@ -56,12 +58,9 @@ class Card extends React.Component {
         });
         onChange({
             id,
-            newCard: {
-                isEdited: false,
-                descr: this.cardBodyRef.current.state.descr,
-                ...newValue,
-            }
-        })
+            title: newValue.title,
+            descr: this.cardBodyRef.current.state.descr,
+        });
     };
 
     doubleClickHandler = id => {
@@ -111,4 +110,9 @@ Card.propTypes = {
     history: PropTypes.any,
 };
 
-export default withLoadingDelay(Card);
+const mapDispatchToProps = {
+    onChange: updateCard,
+    onSelect: selectCard,
+};
+
+export default connect(null, mapDispatchToProps)(withLoadingDelay(Card));
