@@ -1,9 +1,11 @@
 import React from 'react';
 import './Card.scss';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import CardHeader from './CardHeader';
 import CardBody from './CardBody';
 import withLoadingDelay from '../../../hoc/WithLoadingDelay';
+import { updateCard, selectCard } from '../../../../redux/actions/actions';
 
 class Card extends React.Component {
     constructor(props) {
@@ -56,20 +58,25 @@ class Card extends React.Component {
         });
         onChange({
             id,
-            newCard: {
-                isEdited: false,
-                descr: this.cardBodyRef.current.state.descr,
-                ...newValue,
-            }
-        })
+            title: newValue.title,
+            descr: this.cardBodyRef.current.state.descr,
+        });
+    };
+
+    doubleClickHandler = id => {
+        const { viewOnly } = this.props;
+        if (!viewOnly) {
+            const { history } = this.props;
+            history.push(`/card/${id}`);
+        }
     };
 
     render() {
-        const { viewOnly } = this.props;
+        const { viewOnly, id } = this.props;
         const { selectedCard, title, descr, isEdited } = this.state;
         const className = selectedCard ? 'card selected' : 'card';
         return (
-            <div className={className}>
+            <div className={className} onDoubleClick={() => this.doubleClickHandler(id)}>
                 <CardHeader
                     ref={this.cardHeaderRef}
                     title={title}
@@ -100,6 +107,12 @@ Card.propTypes = {
     onSelect: PropTypes.func,
     onChange: PropTypes.func,
     id: PropTypes.string,
+    history: PropTypes.any,
 };
 
-export default withLoadingDelay(Card);
+const mapDispatchToProps = {
+    onChange: updateCard,
+    onSelect: selectCard,
+};
+
+export default connect(null, mapDispatchToProps)(withLoadingDelay(Card));
