@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './CardInfo.scss';
 import PropTypes from 'prop-types';
-import { updateCard } from '../../../redux/actions/actions';
+import { updateCard } from '../../../redux/actions/cardActions';
 
 export class CardInfo extends Component {
     constructor(props) {
@@ -98,7 +98,7 @@ CardInfo.propTypes = {
     handleUpdateCard: PropTypes.func,
 };
 
-const mapStateToProps = state => ({ cards: state.cards });
+const mapStateToProps = state => ({ cards: state.cardReducer.cards });
 
 const mapDispatchToProps = {
     handleUpdateCard: updateCard,

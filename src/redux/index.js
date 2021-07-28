@@ -1,6 +1,14 @@
-import { createStore, applyMiddleware, compose } from 'redux';
+import { createStore, applyMiddleware, compose , combineReducers} from 'redux';
 import thunk from 'redux-thunk';
-import reducer from './reducers/reducer';
+import cardReducer from './reducers/cardReducer';
+import AuthReducer from './reducers/authReducer';
+import settingsReducer from './reducers/settingsReducer';
+
+const rootReducer = combineReducers({
+    cardReducer,
+    authReducer: AuthReducer,
+    settingsReducer,
+});
 
 // enable Redux DevTools
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -10,6 +18,6 @@ const logger = () => next => action => {
     return next(action);
 };
 
-const store = createStore(reducer, composeEnhancers(applyMiddleware(logger, thunk)));
+const store = createStore(rootReducer, composeEnhancers(applyMiddleware(logger, thunk)));
 
 export default store;

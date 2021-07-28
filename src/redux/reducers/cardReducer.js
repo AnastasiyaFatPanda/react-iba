@@ -17,7 +17,7 @@ const initialState = {
     countCards: 0,
 };
 
-const reducer = (state = initialState, action) => {
+const cardReducer = (state = initialState, action) => {
     switch (action.type) {
         case FETCH_CARD_START:
             return {
@@ -86,4 +86,4 @@ const reducer = (state = initialState, action) => {
     }
 };
 
-export default reducer;
+export default cardReducer;
