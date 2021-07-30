@@ -7,7 +7,7 @@ import CardBody from './CardBody';
 import withLoadingDelay from '../../../hoc/WithLoadingDelay';
 import { updateCard, selectCard } from '../../../../redux/actions/cardActions';
 
-class Card extends React.Component {
+export class Card extends React.Component {
     constructor(props) {
         super(props);
         const { title, descr, selected } = this.props;
