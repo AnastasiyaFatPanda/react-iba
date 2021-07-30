@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Card from './card';
 
-const CardList = ({ readOnly, cards, isAdmin }) => {
+const CardList = ({ readOnly, cards }) => {
     const history = useHistory();
 
     return cards.map(card => (
@@ -13,7 +13,7 @@ const CardList = ({ readOnly, cards, isAdmin }) => {
             descr={card.descr}
             key={card.id}
             id={card.id}
-            viewOnly={readOnly && !isAdmin}
+            viewOnly={readOnly}
             isSelected={card.selected}
             history={history}
         />
@@ -22,13 +22,11 @@ const CardList = ({ readOnly, cards, isAdmin }) => {
 
 CardList.propTypes = {
     readOnly: PropTypes.bool,
-    isAdmin: PropTypes.bool,
     cards: PropTypes.array,
 };
 
 const mapStateToProps = state => ({
     readOnly: state.settingsReducer.readOnly,
-    isAdmin: state.authReducer.currentUser.isAdmin,
     cards: state.cardReducer.cards,
 });
 

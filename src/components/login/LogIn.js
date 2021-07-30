@@ -6,7 +6,6 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Input from './input';
 import { AuthActions } from '../../redux/reducers/authReducer';
-import { fetchCards } from '../../redux/actions/cardActions';
 
 class LogIn extends React.Component {
     constructor(props) {
@@ -96,14 +95,13 @@ class LogIn extends React.Component {
     }
 
     logIn = () => {
-        const { logInHandle, fetchCardsHandle } = this.props;
+        const { logInHandle } = this.props;
         const { logInForm } = this.state;
 
         const username = logInForm.find((form) => form.type === 'email').value;
         const password = logInForm.find((form) => form.type === 'password').value;
 
         logInHandle({ username, password });
-        fetchCardsHandle();
     }
 
     render() {
@@ -139,12 +137,10 @@ class LogIn extends React.Component {
 
 LogIn.propTypes = {
     logInHandle: PropTypes.func,
-    fetchCardsHandle: PropTypes.func,
 };
 
 const mapDispatchToProps = {
     logInHandle: AuthActions.login,
-    fetchCardsHandle:  fetchCards,
 };
 
 export default connect(null, mapDispatchToProps)(LogIn);
