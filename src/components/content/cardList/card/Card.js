@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import CardHeader from './CardHeader';
 import CardBody from './CardBody';
 import withLoadingDelay from '../../../hoc/WithLoadingDelay';
-import { updateCard, selectCard } from '../../../../redux/actions/actions';
+import { updateCard, selectCard } from '../../../../redux/actions/cardActions';
 
 class Card extends React.Component {
     constructor(props) {

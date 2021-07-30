@@ -7,6 +7,3 @@ export const VIEW_ONLY = 'VIEW_ONLY';
 export const FETCH_CARD_START = 'FETCH_CARD_START';
 export const FETCH_CARD_SUCCESS = 'FETCH_CARD_SUCCESS';
 export const FETCH_CARD_FAIL = 'FETCH_CARD_FAIL';
-
-export const LOGIN = 'LOGIN';
-export const LOGOUT = 'LOGOUT';

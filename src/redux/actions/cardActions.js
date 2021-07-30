@@ -8,7 +8,6 @@ import {
     FETCH_CARD_START,
     FETCH_CARD_SUCCESS,
     FETCH_CARD_FAIL,
-    VIEW_ONLY
 } from './types';
 
 const URL = 'https://raw.githubusercontent.com/BrunnerLivio/PokemonDataGraber/master/output.json';
@@ -43,5 +42,3 @@ export const fetchCards = () => dispatch => {
             })
     );
 };
-
-export const viewOnlyChange = () => ({ type: VIEW_ONLY });

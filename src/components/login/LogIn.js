@@ -3,7 +3,9 @@ import './LogIn.scss';
 import { Link } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import Input from './input';
+import { AuthActions } from '../../redux/reducers/authReducer';
 
 class LogIn extends React.Component {
     constructor(props) {
@@ -92,8 +94,17 @@ class LogIn extends React.Component {
         this.setState({ logInForm: newInputState });
     }
 
+    logIn = () => {
+        const { logInHandle } = this.props;
+        const { logInForm } = this.state;
+
+        const username = logInForm.find((form) => form.type === 'email').value;
+        const password = logInForm.find((form) => form.type === 'password').value;
+
+        logInHandle({ username, password });
+    }
+
     render() {
-        const { logIn } = this.props;
         const { logInForm, formIsValid } = this.state;
 
         return (
@@ -115,7 +126,7 @@ class LogIn extends React.Component {
                         className="btn btn-light"
                         type="submit"
                         disabled={!formIsValid}
-                        onClick={logIn} >
+                        onClick={this.logIn} >
                         Log In
                     </button>
                 </Link>
@@ -125,7 +136,11 @@ class LogIn extends React.Component {
 };
 
 LogIn.propTypes = {
-    logIn: PropTypes.func
+    logInHandle: PropTypes.func,
 };
 
-export default LogIn;
+const mapDispatchToProps = {
+    logInHandle: AuthActions.login,
+};
+
+export default connect(null, mapDispatchToProps)(LogIn);
