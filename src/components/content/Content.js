@@ -18,6 +18,7 @@ class Content extends React.Component {
             isDisabled,
             deleteCardHandle,
             createCardHandle,
+            readOnly,
         } = this.props;
         return (
             <div className="content">
@@ -25,7 +26,7 @@ class Content extends React.Component {
                     <button
                         className="btn btn-dark"
                         type="button"
-                        disabled={isDisabled}
+                        disabled={isDisabled || readOnly}
                         onClick={deleteCardHandle}
                     >
                         Delete selected
@@ -33,6 +34,7 @@ class Content extends React.Component {
                     <button
                         className="btn btn-dark"
                         type="button"
+                        disabled={readOnly}
                         onClick={createCardHandle}
                     >
                         Create a new card
@@ -52,10 +54,12 @@ Content.propTypes = {
     deleteCardHandle: PropTypes.func,
     createCardHandle: PropTypes.func,
     fetchCardsHandle: PropTypes.func,
+    readOnly: PropTypes.bool,
 };
 const mapStateToProps = state => ({
     isDisabled: state.cardReducer.isDisabled,
     cards: state.cardReducer.cards,
+    readOnly: state.settingsReducer.readOnly,
 });
 
 const mapDispatchToProps = {
