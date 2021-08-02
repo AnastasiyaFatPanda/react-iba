@@ -74,4 +74,11 @@ describe('<Card /> component', () => {
         expect(spy).toBeCalledTimes(1);
     });
 
+    it('doubleclick on the card with viewOnly === true', () => {
+        wrapper.setProps({ viewOnly: true });
+        wrapper.simulate('DoubleClick');
+        // should show list of cards
+        expect(wrapper.find('.content')).toBeTruthy();
+    });
+
 });

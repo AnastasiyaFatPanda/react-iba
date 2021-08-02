@@ -30,4 +30,9 @@ describe('<CardBody /> component', () => {
         expect(wrapper.state('descr')).toEqual(newDescription.target.value);
     });
 
+    it('show textarea', () => {
+        wrapper.setProps({ isEdited : true });
+        expect(wrapper.state('descr')).toEqual("Something");
+    });
+
 })
